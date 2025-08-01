@@ -1,0 +1,325 @@
+.app {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.flow-container {
+  flex: 1;
+  width: 100%;
+  background: white;
+  position: relative;
+}
+
+/* Controls styling */
+.react-flow__controls-button {
+  background: #f8f8f8 !important;
+  border: 1px solid #e0e0e0 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #666 !important;
+  transition: all 0.2s ease !important;
+}
+
+.react-flow__controls-button:hover {
+  background: #4a90e2 !important;
+  border-color: #357abd !important;
+  color: white !important;
+}
+
+.react-flow__controls-button svg {
+  fill: currentColor !important;
+  width: 16px;
+  height: 16px;
+}
+
+.react-flow__controls {
+  background: white;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  bottom: 20px !important;
+  left: 20px !important;
+  position: absolute !important;
+}
+
+/* ChatBox styling */
+.chatbox {
+  position: fixed;
+  width: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.2s;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 40px);
+}
+
+.chatbox.expanded {
+  height: 600px;
+}
+
+.chatbox.dragging {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  opacity: 0.95;
+  cursor: grabbing !important;
+}
+
+.chatbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #000000;
+  border-bottom: 1px solid #333;
+  border-radius: 12px 12px 0 0;
+  cursor: grab;
+  color: white;
+  flex-shrink: 0;
+}
+
+.chatbox.dragging .chatbox-header {
+  cursor: grabbing;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reset-button {
+  padding: 4px 8px;
+  font-size: 12px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.reset-button:hover {
+  background-color: #ff0000;
+}
+
+.toggle-icon {
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+  color: white;
+}
+
+.chatbox-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.chatbox-content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  height: calc(100% - 45px); /* Subtract header height */
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.message {
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+.message.user {
+  background: #e3f2fd;
+  margin-left: 20px;
+  margin-right: 12px;
+  border-radius: 12px 12px 0 12px;
+}
+
+.message.ai {
+  background: #f5f5f5;
+  margin-right: 20px;
+  margin-left: 12px;
+  border-radius: 12px 12px 12px 0;
+}
+
+.message.loading {
+  font-style: italic;
+  color: #666;
+}
+
+.chat-input {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: auto;
+}
+
+.chat-input form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.chat-input textarea {
+  width: 100%;
+  resize: none;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  line-height: 1.4;
+  min-height: 80px;
+  box-sizing: border-box;
+  color: black;
+  background-color: white;
+}
+
+.chat-input textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.chat-input button {
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 6px;
+  background-color: #2d72d9;
+  color: white;
+  border: none;
+  cursor: pointer;
+  height: 36px;
+}
+
+.chat-input button:hover:not(:disabled) {
+  background-color: #2461c0;
+}
+
+.chat-input button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.phenological-node {
+  padding: 16px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.phenological-node.input {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.phenological-node.output {
+  border-color: #10b981;
+  background: #ecfdf5;
+}
+
+.phenological-node .node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phenological-node .node-header {
+  font-weight: 600;
+  color: #2563eb;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.phenological-node .node-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.phenological-node .stage {
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.phenological-node .timing {
+  color: #059669;
+  font-size: 11px;
+}
+
+.phenological-node .description {
+  color: #6b7280;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* React Flow specific styles */
+.react-flow__node {
+  width: auto !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.react-flow__handle {
+  width: 8px !important;
+  height: 8px !important;
+  background: #64748b !important;
+}
+
+.react-flow__edge-path {
+  stroke: #64748b !important;
+  stroke-width: 2 !important;
+}
+
+.react-flow__edge-text {
+  font-size: 12px !important;
+  fill: #4b5563 !important;
+}
+
+.example-prompts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.example-button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.example-button:hover {
+  background: #357abd;
+}
+
+.example-button:active {
+  transform: translateY(0);
+}
